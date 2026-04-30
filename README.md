@@ -1,6 +1,10 @@
 # Rupubaby
 A personalized love confession page
 
+## 🚀 Live Demo
+
+**Live Preview:** [https://rupubaby.vercel.app/](https://rupubaby.vercel.app/)
+
 # Btw all the text on the website is written in my mother tongue — Bengali from Tripura. 🗣️💙
 
 # 💕A personalized love confession page — because some feelings deserve more than a text message.
