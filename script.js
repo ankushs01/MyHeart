@@ -121,20 +121,20 @@ function handleNoClick() {
     const isMobile = window.innerWidth < 600
 
     //claude.ai
-    // const maxFontSize = isMobile ? 2.2 : 5    // rem equivalent in px
-    // const maxPadY = isMobile ? 28 : 60
-    // const maxPadX = isMobile ? 55 : 120
-    const maxFontSize = isMobile ? 4 : 5
-    const maxPadY = isMobile ? 40 : 60
-    const maxPadX = isMobile ? 90 : 120
+    const maxFontSize = isMobile ? 2.2 : 5    // rem equivalent in px
+    const maxPadY = isMobile ? 28 : 60
+    const maxPadX = isMobile ? 55 : 120
+    // const maxFontSize = isMobile ? 4 : 5
+    // const maxPadY = isMobile ? 40 : 60
+    // const maxPadX = isMobile ? 90 : 120
     //claude.ai
 
     const currentSize = parseFloat(window.getComputedStyle(yesBtn).fontSize)
 
     //claude.ai
-    // const newSize = Math.min(currentSize * 1.35, maxFontSize * 16)
-    const growRate = isMobile ? 1.12 : 1.35
-    const newSize = Math.min(currentSize * growRate, maxFontSize * 16)
+    const newSize = Math.min(currentSize * 1.35, maxFontSize * 16)
+    // const growRate = isMobile ? 1.12 : 1.35
+    // const newSize = Math.min(currentSize * growRate, maxFontSize * 16)
     //claude.ai
 
     yesBtn.style.fontSize = `${newSize}px`
