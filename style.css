@@ -75,6 +75,11 @@ h1 {
     margin: 20px auto;
     display: flex;
     justify-content: center;
+    /*  Photo */
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+    /*  Photo */
 }
 
 #cat-gif {
@@ -226,5 +231,74 @@ h1 {
         /* Always keep No button reachable */
         min-width: 80px;
         font-size: 0.85rem !important;
+    }
+}
+
+
+/* Photo */
+.photo-polaroid {
+    background: white;
+    padding: 10px 10px 32px 10px;
+    border-radius: 10px;
+    box-shadow: 0 8px 32px rgba(214, 51, 132, 0.35),
+                0 2px 8px rgba(0,0,0,0.12);
+    transform: rotate(2deg);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: floatPhoto 3s ease-in-out infinite;
+}
+
+.photo-polaroid:hover {
+    transform: rotate(0deg) scale(1.04);
+    box-shadow: 0 16px 40px rgba(214, 51, 132, 0.45);
+}
+
+.couple-photo {
+    width: 160px;
+    height: 210px;
+    object-fit: cover;
+    object-position: center bottom;
+    display: block;
+    border-radius: 2px;
+}
+
+.photo-caption {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 0.85rem;
+    color: #d63384;
+    font-weight: 700;
+    font-family: 'Nunito', sans-serif;
+}
+
+@keyframes floatPhoto {
+    0%, 100% { transform: rotate(2deg) translateY(0px); }
+    50% { transform: rotate(2deg) translateY(-7px); }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    .yes-container .gif-container {
+        flex-direction: row;       /* keep side by side on mobile */
+        align-items: center;
+        gap: 14px;
+    }
+
+    .yes-container #cat-gif {
+        width: 130px !important;   /* shrink GIF to match photo */
+        height: 130px !important;
+    }
+
+    .couple-photo {
+        width: 110px;
+        height: 145px;
+    }
+
+    .photo-polaroid {
+        /* padding: 7px 7px 26px 7px; */   /* My choice */
+        padding: 7px 7px 15px 7px;
+    }
+
+    .photo-caption {
+        font-size: 0.75rem;
     }
 }
