@@ -1,8 +1,7 @@
 # Rupubaby
 A personalized love confession page
 
-# P.P.S. — Btw all the text on the website is written in my mother tongue — Bengali from Tripura. 🗣️💙
-*P.S. — The No button always loses. 😌*
+# Btw all the text on the website is written in my mother tongue — Bengali from Tripura. 🗣️💙
 
 # 💕A personalized love confession page — because some feelings deserve more than a text message.
 
