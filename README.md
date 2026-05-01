@@ -84,7 +84,7 @@ A surprise birthday page revealed through the toggle on `yes.html`. Features:
 
 ---
 
-## 📁 Project Structure
+## 📁 Project Structure / File Structure
 
 ```
 MyHeart/
@@ -101,8 +101,11 @@ MyHeart/
 ├── Rupasree and me3.jpeg
 ├── Rupasree and me4.jpeg
 └── music/
+    ├── beabadoobee - Glue Song (Lyrics).mp3
     ├── I-Love-You-Rupasree.mp3
-    └── I-Love-You-Rupasree(Part-1).mp3
+    ├── I-Love-You-Rupasree(Part-1).mp3
+    ├── I-Love-You-Rupasree(Part-2).mp3
+    └── I-Love-You-Rupasree(Part-3).mp3
 ```
 
 
