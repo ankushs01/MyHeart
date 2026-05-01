@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <title>Happy Birthday Baby 🎂🐼</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: #FFE4E8;
+            font-family: 'Nunito', sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+            overflow-y: auto;
+            background-image:
+                radial-gradient(circle at 15% 85%, #ffb3c1 0%, transparent 40%),
+                radial-gradient(circle at 85% 15%, #ff8fa3 0%, transparent 40%),
+                radial-gradient(circle at 50% 50%, #fff0f3 0%, transparent 60%);
+        }
+
+        /* Floating hearts */
+        .hearts-bg {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+        .hearts-bg::before, .hearts-bg::after {
+            content: '💕 💗 💖 💝 💓';
+            position: absolute;
+            font-size: 1.5rem;
+            opacity: 0.15;
+            animation: floatHearts 12s linear infinite;
+            white-space: nowrap;
+            top: 100%; left: 10%;
+        }
+        .hearts-bg::after {
+            animation-delay: 6s;
+            left: 60%;
+            content: '💗 💕 💓 💖 💝';
+        }
+        @keyframes floatHearts {
+            from { transform: translateY(0); opacity: 0.15; }
+            to   { transform: translateY(-110vh); opacity: 0; }
+        }
+
+        /* ── Main page wrapper ── */
+        .page {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 32px 20px 80px;
+            gap: 20px;
+        }
+
+        /* ── Title ── */
+        .bday-title {
+            font-size: clamp(1.45rem, 6.5vw, 2.8rem);
+            line-height: 1.25;
+            color: #d63384;
+            font-weight: 900;
+            text-shadow: 2px 2px 0 rgba(214,51,132,0.2);
+            animation: wiggle 2s ease-in-out infinite;
+        }
+        @keyframes wiggle {
+            0%,100% { transform: rotate(-1deg); }
+            50%      { transform: rotate(1deg); }
+        }
+
+        /* ── Sticker ── */
+        .bday-sticker {
+            width: clamp(100px, 28vw, 150px);
+            height: clamp(100px, 28vw, 150px);
+            object-fit: contain;
+            filter: drop-shadow(0 4px 10px rgba(0,0,0,0.12));
+        }
+
+        /* ── 2×2 photo grid, fills width ── */
+        .photos-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            width: 100%;
+            max-width: 360px;   /* keeps cards a nice size on mobile */
+        }
+
+        /* ── Single polaroid ── */
+        .photo-polaroid {
+            background: white;
+            padding: 7px 7px 20px;
+            border-radius: 8px;
+            box-shadow:
+                0 6px 20px rgba(214,51,132,0.28),
+                0 2px 6px rgba(0,0,0,0.10);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .photo-polaroid:nth-child(1) { animation: fp1 3.2s ease-in-out infinite; }
+        .photo-polaroid:nth-child(2) { animation: fp2 2.9s ease-in-out infinite; }
+        .photo-polaroid:nth-child(3) { animation: fp3 3.5s ease-in-out infinite; }
+        .photo-polaroid:nth-child(4) { animation: fp4 3.1s ease-in-out infinite; }
+
+        @keyframes fp1 { 0%,100%{transform:rotate(-2deg)   translateY(0)} 50%{transform:rotate(-2deg)   translateY(-5px)} }
+        @keyframes fp2 { 0%,100%{transform:rotate(1.5deg)  translateY(0)} 50%{transform:rotate(1.5deg)  translateY(-4px)} }
+        @keyframes fp3 { 0%,100%{transform:rotate(-1deg)   translateY(0)} 50%{transform:rotate(-1deg)   translateY(-6px)} }
+        @keyframes fp4 { 0%,100%{transform:rotate(2.5deg)  translateY(0)} 50%{transform:rotate(2.5deg)  translateY(-3px)} }
+
+        .photo-polaroid:active {
+            transform: rotate(0deg) scale(1.04) !important;
+            box-shadow: 0 14px 36px rgba(214,51,132,0.45);
+            animation: none;
+        }
+
+        .couple-photo {
+            width: 100%;
+            aspect-ratio: 3 / 4;
+            object-fit: cover;
+            /* object-position: center top; */
+            object-position: center center;         /* Change by claude.ai */
+            display: block;
+            border-radius: 2px;
+        }
+
+        .photo-caption {
+            margin-top: 6px;
+            font-size: clamp(0.58rem, 2.3vw, 0.75rem);
+            color: #d63384;
+            font-weight: 700;
+            font-family: 'Nunito', sans-serif;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* ── Birthday message ── */
+        .bday-message {
+            font-size: clamp(0.92rem, 3.5vw, 1.25rem);
+            color: #e91e8c;
+            font-weight: 700;
+            line-height: 1.7;
+            animation: fadeIn 1s ease 0.4s both;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ── Music button ── */
+        #music-toggle {
+            position: fixed;
+            /* bottom: 20px;
+            right: 20px; */
+            bottom: 4px;
+            right: 2px;
+            background: rgba(255,255,255,0.85);
+            border: none;
+            border-radius: 50%;
+            width: 52px;
+            height: 52px;
+            font-size: 1.4rem;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+            transition: transform 0.2s;
+            z-index: 100;
+        }
+        #music-toggle:hover { transform: scale(1.1); }
+
+        /* ── Desktop: 4-in-a-row ── */
+        @media (min-width: 500px) {
+            .photos-grid {
+                grid-template-columns: repeat(4, 1fr);
+                max-width: 520px;
+            }
+        }
+    </style>
+
+</head>
+<body>
+    <div class="hearts-bg"></div>
+
+    <div class="page">
+
+        <h1 class="bday-title">Happy Birthday Rupasree 🐼🎂</h1>
+
+        <img
+            class="bday-sticker"
+            src="https://media.tenor.com/KvwRzYnJpFkAAAAj/tkthao219-bubududu.gif"
+            alt="bubududu birthday"
+        >
+
+        <!-- 4 Polaroids — swap src 2, 3, 4 with your other photo filenames -->
+        <div class="photos-grid">
+
+            <div class="photo-polaroid">
+                <img src="Rupasree and me5.jpeg" alt="photo 1" class="couple-photo">
+                <p class="photo-caption">Ami r Tui 🐻🐼</p>
+            </div>
+
+            <div class="photo-polaroid">
+                <img src="Rupasree baby.jpeg" alt="photo 2" class="couple-photo">
+                <p class="photo-caption">My fav smile 💕</p>
+            </div>
+
+            <div class="photo-polaroid">
+                <img src="Rupasree and me3.jpeg" alt="photo 3" class="couple-photo">
+                <p class="photo-caption">Always & forever 🌸</p>
+            </div>
+
+            <div class="photo-polaroid">
+                <img src="Rupasree and me4.jpeg" alt="photo 4" class="couple-photo">
+                <p class="photo-caption">I love you kuttu 🎀</p>
+            </div>
+
+        </div>
+
+        <p class="bday-message">
+            I feel lucky to have you in my life :) 💖<br>
+            I hope your all dreams come true 🧿
+            So,birthday girl just remember that I'm always there for you 🥰
+        </p>
+
+    </div>
+
+    <audio id="bg-music" loop>
+        <!-- <source src="music/I-Love-You-Rupasree.mp3" type="audio/mpeg"> -->
+        <source src="music/I-Love-You-Rupasree(Part-3).mp3" type="audio/mpeg">
+    </audio>
+    <button id="music-toggle" onclick="toggleMusic()">🔊</button>
+
+    <script>
+        let musicPlaying = false
+
+        window.addEventListener('load', () => {
+            launchConfetti()
+            const music = document.getElementById('bg-music')
+            music.volume = 0.3
+            music.play().catch(() => {})
+            musicPlaying = true
+        })
+
+        function launchConfetti() {
+            const colors = ['#ff69b4','#ff1493','#ff85a2','#ffb3c1','#ff0000','#ffdf00','#fff','#ff6347']
+            const end = Date.now() + 7000
+            confetti({ particleCount: 160, spread: 110, origin: { x: 0.5, y: 0.2 }, colors })
+            const iv = setInterval(() => {
+                if (Date.now() > end) { clearInterval(iv); return }
+                confetti({ particleCount: 28, angle: 60,  spread: 55, origin: { x: 0, y: 0.6 }, colors })
+                confetti({ particleCount: 28, angle: 120, spread: 55, origin: { x: 1, y: 0.6 }, colors })
+            }, 400)
+        }
+
+        function toggleMusic() {
+            const music = document.getElementById('bg-music')
+            if (musicPlaying) {
+                music.pause(); musicPlaying = false
+                document.getElementById('music-toggle').textContent = '🔇'
+            } else {
+                music.play(); musicPlaying = true
+                document.getElementById('music-toggle').textContent = '🔊'
+            }
+        }
+    </script>
+</body>
+</html>
