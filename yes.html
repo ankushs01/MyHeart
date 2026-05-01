@@ -208,6 +208,17 @@
         }
 
         .toggle input:checked ~ .label { color: rgba(0,0,0,0.8); }
+
+        /* This is to visible the 🐼 button on desktop mode */
+        @media (min-width: 601px) {
+            .yes-container {
+                overflow: visible;
+            }
+            body {
+                overflow-y: auto;
+            }
+        }
+        
     </style>
     <!-- NEW -->
     
