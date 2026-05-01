@@ -41,8 +41,10 @@ const noMessages = [
 const yesTeasePokes = [
     "Ami jani tui amare onek valopas but ekbar na koira dek, ki hoi!! 😇",
     "Are try to koira dek kuttu... 👀",
-    "Miss krtasos kuttu.. 😈",
-    "click kr Naa te nomuna na koira.. 😤"
+    // "Miss krtasos kuttu.. 😈",
+    "Miss krtasos kuttu.. 😤",
+    // "click kr Naa te nomuna na koira.. 😤"
+    "click kro na Baby.. 😩"
 ]
 
 let yesTeasedCount = 0
