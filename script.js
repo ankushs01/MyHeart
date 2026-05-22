@@ -100,7 +100,9 @@ function showTeaseMessage(msg) {
     toast.textContent = msg
     toast.classList.add('show')
     clearTimeout(toast._timer)
-    toast._timer = setTimeout(() => toast.classList.remove('show'), 2500)
+    // toast._timer = setTimeout(() => toast.classList.remove('show'), 2500)
+    toast._timer = setTimeout(() => toast.classList.remove('show'), Math.max(2500, msg.length * 60))  
+    //"Math.max(2500, msg.length * 60)" This calculates time based on how long the message is: (Short messages (~30 chars) → ~2500ms as before), (Long first message (~70 chars) → ~4200ms automatically)
 }
 
 function handleNoClick() {
