@@ -130,6 +130,8 @@ Originally inspired by [**SahilGogna/v-day**](https://github.com/SahilGogna/v-da
 
 Modified and personalized with Bengali love, custom messages, new GIFs, mobile responsiveness fixes, new pages, personalized photo section and a whole lot of feelings. 💕
 
+---
+
 ## ✨🤝
 If you use this project or build on it, a mention or link back is appreciated — not legally required, but it makes my day. 🙂
 
