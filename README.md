@@ -138,4 +138,10 @@ Modified and personalized with Bengali love, custom messages, new GIFs, mobile r
 
 ---
 
+## 📜 License
+
+This project is open source and available under the [MIT License](LICENSE).
+
+---
+
 *P.S. — The No button always loses. 😌*
